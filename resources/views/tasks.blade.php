@@ -50,33 +50,24 @@
                     <!-- Table Body -->
                     <tbody>
                         @foreach ($tasks as $task)
-                            <tr>
-                                <!-- Task Name -->
-                                <td class="table-text">
-                                    <div>{{ $task->name }}</div>
-                                </td>
+                        <tr>
+                            <!-- Task Name -->
+                            <td class="table-text">
+                                <div>{{ $task->name }}</div>
+                            </td>
 
-                                <td>
-                                    <tr>
-                                        <!-- Task Name -->
-                                        <td class="table-text">
-                                            <div>{{ $task->name }}</div>
-                                        </td>
+                            <!-- Delete Button -->
+                            <td>
+                                <form action="{{ url('task/'.$task->id) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
 
-                                        <!-- Delete Button -->
-                                        <td>
-                                            <form action="{{ url('task/'.$task->id) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i> Delete
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                </td>
-                            </tr>
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
